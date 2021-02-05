@@ -30,7 +30,7 @@
                             Dropdown
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Lists</a>
+                            <a class="dropdown-item" href="./Lists.html">Lists</a>
                             <a class="dropdown-item" href="#">To Do's</a>
 
                         </div>
@@ -47,27 +47,88 @@
             </nav>
             <nav class="row">
                 <nav class="col-md text-center">
-                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal"
-                        data-target="#createMethod">
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#createList">
                         List
                     </button>
-                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal"
-                        data-target="#updateMethod">
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#createToDo">
                         To do
                     </button>
                 </nav>
             </nav>
 
+        </nav>
+        <div class="modal" id="createList">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Create a List</h2>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md text-center">
+                                <input class="input-group-text" type="text" id="name" placeholder="Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Create</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <div class="modal" id="createToDo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Create a List</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="description" placeholder="Description" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="dateCreated" placeholder="Date Created" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="deadlineDate" placeholder="Deadline Date" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="Completion"
+                                placeholder="To do Completed?" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="number" id="ListID" placeholder="List ID" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Create</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-        <!-- Scripts  -->
-        <!--  -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-            crossorigin="anonymous"></script>
+
+    <!-- Scripts  -->
+    <!--  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 
 </body>
 
