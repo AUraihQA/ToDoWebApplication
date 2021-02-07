@@ -60,7 +60,7 @@
                     <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#viewList">
                         View a list
                     </button>
-                    <button type="button" class="btn btn-dark btn-lg" id="ViewAllLists" onclick="#">
+                    <button type="button" class="btn btn-dark btn-lg" id="ViewAllLists" onclick="readAll()">
                         View all lists
                     </button>
                     <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#deleteList">
@@ -68,6 +68,15 @@
                     </button>
                 </nav>
             </nav>
+
+            <br />
+
+            <nav class="row">
+                <nav class="col-md text-center">
+                    <button class="btn btn-danger" id="clearHistory">Clear</button>
+                </nav>
+            </nav>
+
 
         </nav>
         <div class="modal" id="createList">
@@ -87,7 +96,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-success" onclick="createList();"
+                            data-dismiss="modal">Create</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -107,7 +117,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ListID" placeholder="ListID" />
+                                <input class="input-group-text" type="number" id="UListID" placeholder="ListID" />
                             </div>
                             <div class="col-md text-center">
                                 <input class="input-group-text" type="text" id="name" placeholder="Name" />
@@ -115,7 +125,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Update</button>
+                        <button type="button" class="btn btn-success" onclick="updateList();"
+                            data-dismiss="modal">Update</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -134,12 +145,13 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ListID" placeholder="ListID" />
+                                <input class="input-group-text" type="number" id="RListID" placeholder="ListID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Read</button>
+                        <button type="button" class="btn btn-success" onclick="readOne();"
+                            data-dismiss="modal">Read</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -158,25 +170,34 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ListID" placeholder="ListID" />
+                                <input class="input-group-text" type="number" id="DListID" placeholder="ListID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-success" onclick="deleteList()" data-dismiss="modal">Delete</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="peeps"></div>
+
+        
+
+        
+
 
     </nav>
 
 
 
 
+
+
     <!-- Scripts  -->
     <!--  -->
+    <script src="./Lists.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
