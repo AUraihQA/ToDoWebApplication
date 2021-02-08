@@ -60,12 +60,20 @@
                     <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#viewToDo">
                         View a To Do
                     </button>
-                    <button type="button" class="btn btn-dark btn-lg" id="ViewAllToDo" onclick="#">
+                    <button type="button" class="btn btn-dark btn-lg" id="ViewAllToDo" onclick="readAll()">
                         View all To Do's
                     </button>
                     <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#deleteToDo">
                         Delete a To Do
                     </button>
+                </nav>
+            </nav>
+
+            <br />
+
+            <nav class="row">
+                <nav class="col-md text-center">
+                    <button class="btn btn-danger" id="clearHistory">Clear</button>
                 </nav>
             </nav>
 
@@ -82,25 +90,25 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="description" placeholder="Description" />
+                                <input class="input-group-text" type="text" id="Cdescription" placeholder="Description" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="dateCreated" placeholder="Date Created" />
+                                <input class="input-group-text" type="text" id="CdateCreated" placeholder="Date Created" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="deadlineDate" placeholder="Deadline Date" />
+                                <input class="input-group-text" type="text" id="CdeadlineDate" placeholder="Deadline Date" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="Completion"
+                                <input class="input-group-text" type="text" id="CCompletion"
                                     placeholder="To do Completed?" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ListID" placeholder="List ID" />
+                                <input class="input-group-text" type="number" id="CListID" placeholder="List ID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-success" onclick="createToDo()" data-dismiss="modal">Create</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -120,28 +128,28 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ToDoID" placeholder="ToDoID" />
+                                <input class="input-group-text" type="number" id="UToDoID" placeholder="ToDoID" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="description" placeholder="Description" />
+                                <input class="input-group-text" type="text" id="Udescription" placeholder="Description" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="dateCreated" placeholder="Date Created" />
+                                <input class="input-group-text" type="text" id="UdateCreated" placeholder="Date Created" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="deadlineDate" placeholder="Deadline Date" />
+                                <input class="input-group-text" type="text" id="UdeadlineDate" placeholder="Deadline Date" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="text" id="Completion"
+                                <input class="input-group-text" type="text" id="UCompletion"
                                     placeholder="To do Completed?" />
                             </div>
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ListID" placeholder="ListID" />
+                                <input class="input-group-text" type="number" id="UListID" placeholder="ListID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Update</button>
+                        <button type="button" class="btn btn-success" onclick="updateToDo()" data-dismiss="modal">Update</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -160,12 +168,12 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ToDoID" placeholder="ToDoID" />
+                                <input class="input-group-text" type="number" id="RToDoID" placeholder="ToDoID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Read</button>
+                        <button type="button" class="btn btn-success" onclick="readOne()" data-dismiss="modal">Read</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -184,17 +192,19 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md text-center">
-                                <input class="input-group-text" type="number" id="ToDoID" placeholder="ToDoID" />
+                                <input class="input-group-text" type="number" id="DToDoID" placeholder="ToDoID" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" onclick="#" data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-success" onclick="readToDo()" data-dismiss="modal">Delete</button>
                         <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="space"></div>
 
     </nav>
 
@@ -203,6 +213,7 @@
 
     <!-- Scripts  -->
     <!--  -->
+    <script src="./ToDo.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
