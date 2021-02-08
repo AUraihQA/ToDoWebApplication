@@ -1,10 +1,18 @@
 `use strict`;
 
-const CListName = document.querySelector("#Cname");
-const UListName = document.querySelector("#Uname");
-const RListId = document.querySelector("#RListID");
-const UListId = document.querySelector("#UListID");
-const DListId = document.querySelector("#DListID");
+const Cdescription = document.querySelector("#Cdescription");
+const CdateCreated = document.querySelector("#CdateCreated");
+const CdeadlineDate = document.querySelector("#CdeadlineDate");
+const CCompletion = document.querySelector("#CCompletion");
+const CListID = document.querySelector("#CListID");
+const UToDoID = document.querySelector("#UToDoID");
+const Udescription = document.querySelector("#Udescription");
+const UdateCreated = document.querySelector("#UdateCreated");
+const UdeadlineDate = document.querySelector("#UdeadlineDate");
+const UCompletion = document.querySelector("#UCompletion");
+const UListID = document.querySelector("#UListID");
+const RToDoId = document.querySelector("#RToDoID");
+const DToDoID = document.querySelector("#DToDoID");
 const space = document.querySelector("#space");
 const clearHistory = document.querySelector("#clearHistory");
 
@@ -14,11 +22,19 @@ const clearH = () => {
 
 clearHistory.addEventListener("click", clearH);
 
-const createList = () => {
-    const ListName = CListName.value;
+const createToDo = () => {
+    const description = Cdescription;
+    const Datecreated = CdateCreated;
+    const Deadlinedate = CdeadlineDate;
+    const completion = CCompletion;
+    const ListId = CListID;
 
     let data = {
-        ListName: ListName,
+        Description: description,
+        DateCreated: Datecreated,
+        DeadlineDate: Deadlinedate,
+        Completion: completion,
+        ListID: ListId
     }
     fetch("#", {
         method: "POST",
@@ -32,13 +48,21 @@ const createList = () => {
         .catch(err => console.error(`Error ${err}`));
 }
 
-const updateList = () => {
-    const UListname = UListName.value;
-    const UListID = UListId.value;
+const updateToDo = () => {
+    const ToDoID = UToDoID;
+    const description = Cdescription;
+    const Datecreated = CdateCreated;
+    const Deadlinedate = CdeadlineDate;
+    const completion = CCompletion;
+    const ListId = CListID;
 
     let data = {
-        id: UListID,
-        Name: UListname
+        id: ToDoID,
+        Description: description,
+        DateCreated: Datecreated,
+        DeadlineDate: Deadlinedate,
+        Completion: completion,
+        ListID: ListId
     }
     fetch(`#/${UListID}`, {
         method: "PUT",
@@ -53,8 +77,8 @@ const updateList = () => {
 }
 
 const readOne = () => {
-    const RListID = RListId.value;
-    fetch(`https://reqres.in/api/users/${RListID}`)
+    const RToDoID = RToDoId.value;
+    fetch(`https://reqres.in/api/users/${RToDoID}`)
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -109,14 +133,14 @@ const readAll = () => {
         })
 }
 
-const deleteList = () => {
-    const DListID = DListId.value;
+const deleteToDo = () => {
+    const DToDoID = DListId.value;
 
     let data = {
-        id: DListID
+        id: DToDoID
     }
 
-    fetch(`https://reqres.in/api/users/${DListID}`, {
+    fetch(`https://reqres.in/api/users/${DToDoID}`, {
         method: "DELETE",
     })
         // .then(response => response.json())
@@ -125,7 +149,5 @@ const deleteList = () => {
         })
         .catch(err => console.error(`Error ${err}`));
 }
-
-
 
 
