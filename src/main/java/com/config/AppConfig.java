@@ -18,5 +18,5 @@ public class AppConfig {
 	public ModelMapper getMapper(){
 		return new ModelMapper();
 	}
-
+	
 }
