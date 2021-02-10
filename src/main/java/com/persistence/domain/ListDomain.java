@@ -20,21 +20,21 @@ public class ListDomain {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String Name;
+	private String name;
 	
-	@OneToMany(mappedBy = "ListID", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy = "listID", fetch= FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<ToDoDomain> catList;
+	private List<ToDoDomain> toDoList;
 
 	public ListDomain() {
 		super();
 	}
 
-	public ListDomain(Long id, String name, List<ToDoDomain> catList) {
+	public ListDomain(Long id, String name, List<ToDoDomain> toDoList) {
 		super();
 		this.id = id;
-		Name = name;
-		this.catList = catList;
+		this.name = name;
+		this.toDoList = toDoList;
 	}
 
 	public Long getId() {
@@ -46,19 +46,19 @@ public class ListDomain {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public List<ToDoDomain> getCatList() {
-		return catList;
+		return toDoList;
 	}
 
 	public void setCatList(List<ToDoDomain> catList) {
-		this.catList = catList;
+		this.toDoList = catList;
 	}
 	
 	

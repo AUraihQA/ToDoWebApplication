@@ -8,8 +8,6 @@ import org.springframework.context.ApplicationContext;
 public class ToDoWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ToDoWebApplication.class, args);
-		
 		ApplicationContext beanbag = SpringApplication.run(ToDoWebApplication.class, args);
 
 		System.out.println(beanbag.getBean("getTime", String.class));	

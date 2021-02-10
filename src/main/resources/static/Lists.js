@@ -18,9 +18,9 @@ const createList = () => {
     const ListName = CListName.value;
 
     let data = {
-        ListName: ListName,
+        name: ListName,
     }
-    fetch("#", {
+    fetch("http://127.0.0.1:8080/list/create", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -38,9 +38,9 @@ const updateList = () => {
 
     let data = {
         id: UListID,
-        Name: UListname
+        name: UListname
     }
-    fetch(`#/${UListID}`, {
+    fetch(`http://127.0.0.1:8080/list/update/${UListID}`, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -54,7 +54,7 @@ const updateList = () => {
 
 const readOne = () => {
     const RListID = RListId.value;
-    fetch(`https://reqres.in/api/users/${RListID}`)
+    fetch(`http://127.0.0.1:8080/list/read/${RListID}`)
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -63,12 +63,11 @@ const readOne = () => {
                 console.log(`response is OK (200)`)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    console.log(infofromserver.data);
-                    for (let users in infofromserver.data) {
+                    for (let users in infofromserver) {
                         console.log(users);
-                        console.log(infofromserver.data[users])
+                        console.log(infofromserver[users])
                         let user = document.createElement("p");
-                        let text = document.createTextNode(`${users} : ${infofromserver.data[users]}`);
+                        let text = document.createTextNode(`${users} : ${infofromserver[users]}`);
                         user.appendChild(text);
                         space.appendChild(user)
                     }
@@ -80,7 +79,7 @@ const readOne = () => {
 }
 
 const readAll = () => {
-    fetch("https://reqres.in/api/users")
+    fetch("http://127.0.0.1:8080/list/getList")
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -89,8 +88,7 @@ const readAll = () => {
                 console.log(`response is OK (200)`)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    console.log(infofromserver.data);
-                    for (let users of infofromserver.data) {
+                    for (let users of infofromserver) {
                         console.log(users);
                         for (let object in users) {
                             console.log(object)
@@ -116,7 +114,7 @@ const deleteList = () => {
         id: DListID
     }
 
-    fetch(`https://reqres.in/api/users/${DListID}`, {
+    fetch(`http://127.0.0.1:8080/list/delete/${DListID}`, {
         method: "DELETE",
     })
         // .then(response => response.json())

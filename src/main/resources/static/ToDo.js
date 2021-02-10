@@ -53,16 +53,16 @@ const updateToDo = () => {
     const description = Cdescription;
     const Datecreated = CdateCreated;
     const Deadlinedate = CdeadlineDate;
-    const completion = CCompletion;
+    const Completion = CCompletion;
     const ListId = CListID;
 
     let data = {
         id: ToDoID,
-        Description: description,
-        DateCreated: Datecreated,
-        DeadlineDate: Deadlinedate,
-        Completion: completion,
-        ListID: ListId
+        description: description,
+        dateCreated: Datecreated,
+        deadlineDate: Deadlinedate,
+        completion: Completion,
+        listID: ListId
     }
     fetch(`#/${UListID}`, {
         method: "PUT",

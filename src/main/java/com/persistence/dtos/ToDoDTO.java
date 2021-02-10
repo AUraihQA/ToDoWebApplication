@@ -1,39 +1,26 @@
-package com.persistence.domain;
+package com.persistence.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-@Entity
-public class ToDoDomain {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ToDoDTO {
 	private Long id;
-	
 	private String description;
 	private String dateCreated;
 	private String deadlineDate;
 	private String completion;
-	
-	@ManyToOne
-	private ListDomain listID;
 
-	public ToDoDomain() {
+
+	public ToDoDTO() {
 		super();
 	}
 
-	public ToDoDomain(Long id, String description, String dateCreated, String deadlineDate, String completion,
-			ListDomain listID) {
+	public ToDoDTO(Long id, String description, String dateCreated, String deadlineDate, String completion
+			) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.dateCreated = dateCreated;
 		this.deadlineDate = deadlineDate;
 		this.completion = completion;
-		this.listID = listID;
+		
 	}
 
 	public Long getId() {
@@ -76,16 +63,5 @@ public class ToDoDomain {
 		this.completion = completion;
 	}
 
-	public ListDomain getListID() {
-		return listID;
-	}
-
-	public void setListID(ListDomain listID) {
-		this.listID = listID;
-	}
-
-
-	
-	
 
 }
