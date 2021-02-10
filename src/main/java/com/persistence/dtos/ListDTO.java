@@ -2,18 +2,16 @@ package com.persistence.dtos;
 
 import java.util.List;
 
-import com.persistence.domain.ToDoDomain;
-
 public class ListDTO {
 	private Long id;
 	private String name;
-	private List<ToDoDomain> toDoList;
-	
+	private List<ToDoDTO> toDoList;
+
 	public ListDTO() {
 		super();
 	}
 
-	public ListDTO(Long id, String name, List<ToDoDomain> toDoList) {
+	public ListDTO(Long id, String name, List<ToDoDTO> toDoList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,16 +34,12 @@ public class ListDTO {
 		this.name = name;
 	}
 
-	public List<ToDoDomain> getToDoList() {
+	public List<ToDoDTO> getToDoList() {
 		return toDoList;
 	}
 
-	public void setToDoList(List<ToDoDomain> toDoList) {
+	public void setToDoList(List<ToDoDTO> toDoList) {
 		this.toDoList = toDoList;
 	}
-	
-	
-	
-	
 
 }

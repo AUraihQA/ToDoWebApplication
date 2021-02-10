@@ -8,32 +8,32 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ToDoDomain {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String description;
 	private String dateCreated;
 	private String deadlineDate;
 	private String completion;
-	
+
 	@ManyToOne
-	private ListDomain listID;
+	private ListDomain myList;
 
 	public ToDoDomain() {
 		super();
 	}
 
 	public ToDoDomain(Long id, String description, String dateCreated, String deadlineDate, String completion,
-			ListDomain listID) {
+			ListDomain myList) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.dateCreated = dateCreated;
 		this.deadlineDate = deadlineDate;
 		this.completion = completion;
-		this.listID = listID;
+		this.myList = myList;
 	}
 
 	public Long getId() {
@@ -76,16 +76,12 @@ public class ToDoDomain {
 		this.completion = completion;
 	}
 
-	public ListDomain getListID() {
-		return listID;
+	public ListDomain getMyList() {
+		return myList;
 	}
 
-	public void setListID(ListDomain listID) {
-		this.listID = listID;
+	public void setMyList(ListDomain myList) {
+		this.myList = myList;
 	}
-
-
-	
-	
 
 }

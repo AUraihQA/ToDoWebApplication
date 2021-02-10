@@ -6,7 +6,9 @@ const RListId = document.querySelector("#RListID");
 const UListId = document.querySelector("#UListID");
 const DListId = document.querySelector("#DListID");
 const space = document.querySelector("#space");
+const space1 = document.querySelector("#space1");
 const clearHistory = document.querySelector("#clearHistory");
+const alert = document.querySelector("#onsuccess");
 
 const clearH = () => {
     space.innerHTML = "";
@@ -18,7 +20,7 @@ const createList = () => {
     const ListName = CListName.value;
 
     let data = {
-        name: ListName,
+        name: ListName
     }
     fetch("http://127.0.0.1:8080/list/create", {
         method: "POST",
@@ -28,6 +30,12 @@ const createList = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "List has been successfully created!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }
@@ -48,6 +56,12 @@ const updateList = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "List has been successfully updated!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }
@@ -63,13 +77,19 @@ const readOne = () => {
                 console.log(`response is OK (200)`)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    for (let users in infofromserver) {
+                    console.log(infofromserver.toDoList);
+                    for (let users of infofromserver.toDoList) {
                         console.log(users);
-                        console.log(infofromserver[users])
-                        let user = document.createElement("p");
-                        let text = document.createTextNode(`${users} : ${infofromserver[users]}`);
-                        user.appendChild(text);
-                        space.appendChild(user)
+                        for (object in users) {
+                            console.log(object);
+                            console.log(users[object]);
+                            let user = document.createElement("p");
+                            let text = document.createTextNode(`${object} : ${users[object]}`);
+                            user.appendChild(text);
+                            space.appendChild(user)
+                        }
+
+
                     }
                 })
             }
@@ -77,6 +97,7 @@ const readOne = () => {
             console.error(err);
         })
 }
+
 
 const readAll = () => {
     fetch("http://127.0.0.1:8080/list/getList")
@@ -90,15 +111,12 @@ const readAll = () => {
                     console.log(infofromserver);
                     for (let users of infofromserver) {
                         console.log(users);
-                        for (let object in users) {
-                            console.log(object)
-                            console.log(users[object])
-                            let user = document.createElement("p");
-                            let text = document.createTextNode(`${object} : ${users[object]}`);
-                            user.appendChild(text);
-                            space.appendChild(user);
-                        }
-
+                        console.log(users.id);
+                        console.log(users.name);
+                        let user = document.createElement("p");
+                        let text = document.createTextNode(`ID:${users.id}  Name:${users.name}`);
+                        user.appendChild(text);
+                        space.appendChild(user);
                     }
                 })
             }
@@ -106,6 +124,8 @@ const readAll = () => {
             console.error(err);
         })
 }
+
+
 
 const deleteList = () => {
     const DListID = DListId.value;
@@ -117,9 +137,14 @@ const deleteList = () => {
     fetch(`http://127.0.0.1:8080/list/delete/${DListID}`, {
         method: "DELETE",
     })
-        // .then(response => response.json())
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "List has been successfully deleted!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }

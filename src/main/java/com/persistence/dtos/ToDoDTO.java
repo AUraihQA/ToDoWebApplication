@@ -6,21 +6,18 @@ public class ToDoDTO {
 	private String dateCreated;
 	private String deadlineDate;
 	private String completion;
-
-
+	
 	public ToDoDTO() {
 		super();
 	}
 
-	public ToDoDTO(Long id, String description, String dateCreated, String deadlineDate, String completion
-			) {
+	public ToDoDTO(Long id, String description, String dateCreated, String deadlineDate, String completion) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.dateCreated = dateCreated;
 		this.deadlineDate = deadlineDate;
 		this.completion = completion;
-		
 	}
 
 	public Long getId() {
@@ -63,5 +60,7 @@ public class ToDoDTO {
 		this.completion = completion;
 	}
 
+	
+	
 
 }

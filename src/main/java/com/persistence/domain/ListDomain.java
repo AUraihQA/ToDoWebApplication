@@ -12,17 +12,16 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-
 @Entity
 public class ListDomain {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
-	@OneToMany(mappedBy = "listID", fetch= FetchType.EAGER)
+
+	@OneToMany(mappedBy = "myList", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<ToDoDomain> toDoList;
 
@@ -53,14 +52,12 @@ public class ListDomain {
 		this.name = name;
 	}
 
-	public List<ToDoDomain> getCatList() {
+	public List<ToDoDomain> getToDoList() {
 		return toDoList;
 	}
 
-	public void setCatList(List<ToDoDomain> catList) {
-		this.toDoList = catList;
+	public void setToDoList(List<ToDoDomain> toDoList) {
+		this.toDoList = toDoList;
 	}
-	
-	
 
 }

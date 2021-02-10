@@ -12,7 +12,7 @@ const UdeadlineDate = document.querySelector("#UdeadlineDate");
 const UCompletion = document.querySelector("#UCompletion");
 const UListID = document.querySelector("#UListID");
 const RToDoId = document.querySelector("#RToDoID");
-const DToDoID = document.querySelector("#DToDoID");
+const DToDoId = document.querySelector("#DToDoID");
 const space = document.querySelector("#space");
 const clearHistory = document.querySelector("#clearHistory");
 
@@ -23,20 +23,24 @@ const clearH = () => {
 clearHistory.addEventListener("click", clearH);
 
 const createToDo = () => {
-    const description = Cdescription;
-    const Datecreated = CdateCreated;
-    const Deadlinedate = CdeadlineDate;
-    const completion = CCompletion;
-    const ListId = CListID;
+    const Description = Cdescription.value;
+    const Datecreated = CdateCreated.value;
+    const Deadlinedate = CdeadlineDate.value;
+    const Completion = CCompletion.value;
+    const ListId = CListID.value;
 
     let data = {
-        Description: description,
-        DateCreated: Datecreated,
-        DeadlineDate: Deadlinedate,
-        Completion: completion,
-        ListID: ListId
+        description: Description.value,
+        dateCreated: Datecreated.value,
+        deadlineDate: Deadlinedate.value,
+        completion: Completion.value,
+        myList: {
+            id: ListId.value
+        }
     }
-    fetch("#", {
+
+    console.log(JSON.stringify(data))
+    fetch("http://127.0.0.1:8080/ToDo/create", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -50,21 +54,24 @@ const createToDo = () => {
 
 const updateToDo = () => {
     const ToDoID = UToDoID;
-    const description = Cdescription;
-    const Datecreated = CdateCreated;
-    const Deadlinedate = CdeadlineDate;
-    const Completion = CCompletion;
-    const ListId = CListID;
+    const Description = Udescription;
+    const Datecreated = UdateCreated;
+    const Deadlinedate = UdeadlineDate;
+    const Completion = UCompletion;
+    const ListId = UListID;
 
     let data = {
-        id: ToDoID,
-        description: description,
-        dateCreated: Datecreated,
-        deadlineDate: Deadlinedate,
-        completion: Completion,
-        listID: ListId
+        id: ToDoID.value,
+        description: Description.value,
+        dateCreated: Datecreated.value,
+        deadlineDate: Deadlinedate.value,
+        completion: Completion.value,
+        myList: {
+            id: ListId.value
+        }
     }
-    fetch(`#/${UListID}`, {
+	console.log(JSON.stringify(data))
+    fetch(`http://127.0.0.1:8080/ToDo/update/${UListID}`, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -78,7 +85,7 @@ const updateToDo = () => {
 
 const readOne = () => {
     const RToDoID = RToDoId.value;
-    fetch(`https://reqres.in/api/users/${RToDoID}`)
+    fetch(`http://127.0.0.1:8080/ToDo/read/${RToDoID}`)
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -87,12 +94,12 @@ const readOne = () => {
                 console.log(`response is OK (200)`)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    console.log(infofromserver.data);
-                    for (let users in infofromserver.data) {
+                    console.log(infofromserver);
+                    for (let users in infofromserver) {
                         console.log(users);
-                        console.log(infofromserver.data[users])
+                        console.log(infofromserver[users])
                         let user = document.createElement("p");
-                        let text = document.createTextNode(`${users} : ${infofromserver.data[users]}`);
+                        let text = document.createTextNode(`${users} : ${infofromserver[users]}`);
                         user.appendChild(text);
                         space.appendChild(user)
                     }
@@ -104,7 +111,7 @@ const readOne = () => {
 }
 
 const readAll = () => {
-    fetch("https://reqres.in/api/users")
+    fetch("http://127.0.0.1:8080/ToDo/getToDo")
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -113,8 +120,7 @@ const readAll = () => {
                 console.log(`response is OK (200)`)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    console.log(infofromserver.data);
-                    for (let users of infofromserver.data) {
+                    for (let users of infofromserver) {
                         console.log(users);
                         for (let object in users) {
                             console.log(object)
@@ -134,13 +140,13 @@ const readAll = () => {
 }
 
 const deleteToDo = () => {
-    const DToDoID = DListId.value;
+    const DToDoID = DToDoId.value;
 
     let data = {
         id: DToDoID
     }
 
-    fetch(`https://reqres.in/api/users/${DToDoID}`, {
+    fetch(`http://127.0.0.1:8080/ToDo/delete/${DToDoID}`, {
         method: "DELETE",
     })
         // .then(response => response.json())
