@@ -15,6 +15,7 @@ const RToDoId = document.querySelector("#RToDoID");
 const DToDoId = document.querySelector("#DToDoID");
 const space = document.querySelector("#space");
 const clearHistory = document.querySelector("#clearHistory");
+const alert = document.querySelector("#onsuccess");
 
 const clearH = () => {
     space.innerHTML = "";
@@ -30,17 +31,17 @@ const createToDo = () => {
     const ListId = CListID.value;
 
     let data = {
-        description: Description.value,
-        dateCreated: Datecreated.value,
-        deadlineDate: Deadlinedate.value,
-        completion: Completion.value,
+        description: Description,
+        dateCreated: Datecreated,
+        deadlineDate: Deadlinedate,
+        completion: Completion,
         myList: {
-            id: ListId.value
+            id: ListId
         }
     }
 
     console.log(JSON.stringify(data))
-    fetch("http://127.0.0.1:8080/ToDo/create", {
+    fetch("http://localhost:8080/ToDo/create", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -48,6 +49,12 @@ const createToDo = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "To Do has been successfully created!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }
@@ -71,7 +78,7 @@ const updateToDo = () => {
         }
     }
 	console.log(JSON.stringify(data))
-    fetch(`http://127.0.0.1:8080/ToDo/update/${UListID}`, {
+    fetch(`http://localhost:8080/ToDo/update/${ToDoID.value}`, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -79,6 +86,12 @@ const updateToDo = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "To Do has been successfully updated!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }
@@ -111,7 +124,7 @@ const readOne = () => {
 }
 
 const readAll = () => {
-    fetch("http://127.0.0.1:8080/ToDo/getToDo")
+    fetch("http://localhost:8080/ToDo/getToDo")
         .then((response) => {
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
@@ -149,9 +162,15 @@ const deleteToDo = () => {
     fetch(`http://127.0.0.1:8080/ToDo/delete/${DToDoID}`, {
         method: "DELETE",
     })
-        // .then(response => response.json())
+        
         .then(info => {
             console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "To Do has been successfully deleted!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
         })
         .catch(err => console.error(`Error ${err}`));
 }
