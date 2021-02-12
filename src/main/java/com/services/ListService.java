@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.persistence.domain.ListDomain;
@@ -50,9 +51,16 @@ public class ListService {
 	}
 	
 	public boolean delete(Long id) {
-		this.repo.deleteById(id);
-		
-		return !this.repo.existsById(id);
+		try {
+			this.repo.deleteById(id);
+
+			boolean flag = !this.repo.existsById(id);
+
+			return flag;
+		} catch (EmptyResultDataAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
