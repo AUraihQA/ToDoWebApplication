@@ -78,11 +78,6 @@ public class ListControllerIntegrationTest {
 	}
 	
 	@Test
-	public void readAll() throws Exception{
-		
-	}
-	
-	@Test
 	public void update() throws Exception {
 		ListDomain contentBody = new ListDomain(1L, "NEW", new ArrayList<>());
 		ListDTO expectedResult = mapToDTO(contentBody); 
