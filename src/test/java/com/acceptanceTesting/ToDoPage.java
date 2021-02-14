@@ -121,7 +121,7 @@ public class ToDoPage {
 		if (result.contains(expected)) {
 			test.log(LogStatus.PASS, expected);
 		} else {
-			test.log(LogStatus.FAIL, "Failed view one to do test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.contains(expected));
@@ -147,7 +147,7 @@ public class ToDoPage {
 		if (result.contains(expected)) {
 			test.log(LogStatus.PASS, expected);
 		} else {
-			test.log(LogStatus.FAIL, "Failed view all to do's test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.contains(expected));
@@ -186,9 +186,9 @@ public class ToDoPage {
 		String result = targ.getText();
 
 		if (result.equals("To Do has been successfully updated!")) {
-			test.log(LogStatus.PASS, "To Do has been successfully created!");
+			test.log(LogStatus.PASS, "To Do has been successfully updated!");
 		} else {
-			test.log(LogStatus.FAIL, "Failed update To Do test");
+			test.log(LogStatus.FAIL, " ");
 		}
 		
 		assertThat(result.concat("To Do has been successfully updated!"));
@@ -220,7 +220,7 @@ public class ToDoPage {
 		if (result.equals("To Do has been successfully deleted!")) {
 			test.log(LogStatus.PASS, "To Do has been successfully deleted!");
 		} else {
-			test.log(LogStatus.FAIL, "Failed delete To Do test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.concat("To Do has been successfully deleted!"));

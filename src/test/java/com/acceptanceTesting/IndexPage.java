@@ -77,10 +77,8 @@ public class IndexPage {
 
 		// THEN the list will be created and they can start adding to do’s
 
-//		targ = driver.findElement(By.xpath("//*[@id=\"onsuccess\"]"));
 		targ = new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"onsuccess\"]")));
 		String result = targ.getText();
-//		assertEquals("List has been successfully created!", result);
 
 		if (result.equals("List has been successfully created!")) {
 			test.log(LogStatus.PASS, "List has been successfully created!");

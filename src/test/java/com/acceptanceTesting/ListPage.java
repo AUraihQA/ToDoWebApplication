@@ -81,10 +81,11 @@ public class ListPage {
 		if (result.equals("List has been successfully created!")) {
 			test.log(LogStatus.PASS, "List has been successfully created!");
 		} else {
-			test.log(LogStatus.FAIL, "Failed create list test");
+			test.log(LogStatus.FAIL, " ");
 		}
-
+		
 		assertThat(result.concat("List has been successfully created!"));
+
 	}
 
 	@Test
@@ -113,7 +114,7 @@ public class ListPage {
 		if (result.contains(expected)) {
 			test.log(LogStatus.PASS, expected);
 		} else {
-			test.log(LogStatus.FAIL, "Failed view one list test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.contains(expected));
@@ -139,7 +140,7 @@ public class ListPage {
 		if (result.contains(expected)) {
 			test.log(LogStatus.PASS, expected);
 		} else {
-			test.log(LogStatus.FAIL, "Failed view all list test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.contains(expected));
@@ -154,7 +155,8 @@ public class ListPage {
 		targ = driver.findElement(By.xpath("/html/body/nav/nav[2]/nav[2]/nav/button[2]"));
 		targ.click();
 
-		// WHEN: they have filled in the id of the list they want to update and the updated details of the list 
+		// WHEN: they have filled in the id of the list they want to update and the
+		// updated details of the list
 		targ = driver.findElement(By.xpath("//*[@id=\"UListID\"]"));
 		targ.sendKeys("1");
 		targ = driver.findElement(By.xpath("//*[@id=\"Uname\"]"));
@@ -163,22 +165,23 @@ public class ListPage {
 		// AND: click update
 		targ = driver.findElement(By.xpath("//*[@id=\"updateList\"]/div/div/div[3]/button[1]"));
 		targ.click();
-		
-		//THEN: the details of the list should be updated with the new details they have filled in
+
+		// THEN: the details of the list should be updated with the new details they
+		// have filled in
 		targ = new WebDriverWait(driver, 20)
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"onsuccess\"]")));
 		String result = targ.getText();
 
 		if (result.equals("List has been successfully updated!")) {
-			test.log(LogStatus.PASS, "List has been successfully created!");
+			test.log(LogStatus.PASS, "List has been successfully updated!");
 		} else {
-			test.log(LogStatus.FAIL, "Failed update list test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.concat("List has been successfully updated!"));
 
 	}
-	
+
 	@Test
 	public void delete() {
 		test = report.startTest("Delete Lists test");
@@ -187,16 +190,16 @@ public class ListPage {
 		driver.get(URL);
 		targ = driver.findElement(By.xpath("/html/body/nav/nav[2]/nav[2]/nav/button[5]"));
 		targ.click();
-		
-		//WHEN: they type the id of the list they want to delete
+
+		// WHEN: they type the id of the list they want to delete
 		targ = driver.findElement(By.xpath("//*[@id=\"DListID\"]"));
 		targ.sendKeys("2");
-		
-		//AND: click the delete button
+
+		// AND: click the delete button
 		targ = driver.findElement(By.xpath("//*[@id=\"deleteList\"]/div/div/div[3]/button[1]"));
 		targ.click();
-		
-		//THEN: the list will be deleted
+
+		// THEN: the list will be deleted
 		targ = new WebDriverWait(driver, 20)
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"onsuccess\"]")));
 		String result = targ.getText();
@@ -204,7 +207,7 @@ public class ListPage {
 		if (result.equals("List has been successfully deleted!")) {
 			test.log(LogStatus.PASS, "List has been successfully deleted!");
 		} else {
-			test.log(LogStatus.FAIL, "Failed delete list test");
+			test.log(LogStatus.FAIL, " ");
 		}
 
 		assertThat(result.concat("List has been successfully deleted!"));
