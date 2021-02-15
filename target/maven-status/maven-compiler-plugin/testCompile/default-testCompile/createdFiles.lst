@@ -1,0 +1,8 @@
+com\acceptanceTesting\ToDoPage.class
+com\services\ToDoServiceUnitTest.class
+com\acceptanceTesting\ListPage.class
+com\rest\ListControllerIntegrationTest.class
+com\acceptanceTesting\IndexPage.class
+com\ToDoWebApplicationTests.class
+com\rest\ToDoControlletIntegrationTest.class
+com\services\ListServiceUnitTest.class

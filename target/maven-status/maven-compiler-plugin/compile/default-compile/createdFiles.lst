@@ -1,0 +1,13 @@
+com\persistence\dtos\ToDoDTO.class
+com\persistence\repos\ListRepo.class
+com\persistence\domain\ListDomain.class
+com\services\ListService.class
+com\rest\ListController.class
+com\utils\MyBeanUtils.class
+com\persistence\dtos\ListDTO.class
+com\rest\ToDoController.class
+com\persistence\repos\ToDoRepo.class
+com\ToDoWebApplication.class
+com\config\AppConfig.class
+com\persistence\domain\ToDoDomain.class
+com\services\ToDoService.class
