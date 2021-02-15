@@ -23,6 +23,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 [Spring Boot](https://spring.io/tools)
 
+[Chromedriver](https://chromedriver.storage.googleapis.com/index.html) - you will need to get the version of your chrome click the options button in the top right hand corner(3 dots) and then select Help and then About Chrome. 
+This will show you the version of chrome you are on and you can download the [driver](https://chromedriver.storage.googleapis.com/index.html) that relates to the version of chrome you have. 
+You will need to create a folder in 'src/main/resources' called 'drivers' and another folder in the drivers folder called 'chrome'. Once you have downloaded the chrome driver, you will need to extract the file and ensure it is named 'chromedriver.exe'.
+The file 'chrome' is where you will insert the chromedriver.exe file you have downloaded using the [link](https://chromedriver.storage.googleapis.com/index.html)
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
