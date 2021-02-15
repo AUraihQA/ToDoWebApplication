@@ -3,7 +3,6 @@ package com.acceptanceTesting;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -18,10 +17,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
@@ -31,36 +26,22 @@ public class IndexPage {
 	private static RemoteWebDriver driver;
 	private static WebElement targ;
 	private final String URL = "http://localhost:8080/index.html";
-	private static ExtentReports report;
-	private static ExtentTest test;
-
 	@BeforeAll
 	public static void Beforeall() {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chrome/chromedriver.exe");
 
 		driver = new ChromeDriver();
-
-		report = new ExtentReports("target/reports/indexPage.html", true);
-	}
-
-	@AfterEach
-	public void endTest() {
-		report.endTest(test);
 	}
 
 	@AfterAll
 	public static void Afterall() {
 		driver.quit();
 
-		report.flush();
-		report.close();
-
 	}
 
 	@Test
 	public void createList() {
 
-		test = report.startTest("Add List test");
 
 		// GIVEN: that the user has clicked the create list button
 		driver.get(URL);
@@ -79,22 +60,14 @@ public class IndexPage {
 
 		targ = new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"onsuccess\"]")));
 		String result = targ.getText();
-
-		if (result.equals("List has been successfully created!")) {
-			test.log(LogStatus.PASS, "List has been successfully created!");
-		} else {
-			test.log(LogStatus.FAIL, " ");
-		}
 		
-		assertThat(result.concat("List has been successfully created!"));
+		assertThat(result.contains("successful"));
 	}
 	
 	
 
 	@Test
 	public void createToDo() {
-
-		test = report.startTest("Add To Do test");
 
 		// GIVEN: that the user has clicked the create to do button
 
@@ -121,16 +94,8 @@ public class IndexPage {
 		// THEN the to do will be created and they can start adding to do’s
 		targ = driver.findElement(By.xpath("//*[@id=\"onsuccess\"]"));
 		String result = targ.getText();
-
 		
-
-		if (result.equals("To Do has been successfully created!")) {
-			test.log(LogStatus.PASS, "To Do has been successfully created!");
-		} else {
-			test.log(LogStatus.FAIL, " ");
-		}
-		
-		assertThat(result.concat("To Do has been successfully created!"));
+		assertThat(result.contains("successful"));
 
 	}
 
