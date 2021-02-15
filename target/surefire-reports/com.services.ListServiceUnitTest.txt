@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.services.ListServiceUnitTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.082 s - in com.services.ListServiceUnitTest

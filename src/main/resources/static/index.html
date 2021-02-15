@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav>
+        <!-- menu -------------------->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="./index.html">ToDo Web Application</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#content"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="content">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./Lists.html">Lists</a>
+                            <a class="dropdown-item" href="./ToDo.html">To Do's</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <nav class="container">
+            <nav class="row">
+                <nav class="col-md text-center">
+                    <h1 class="text-center display-1">Add a list or to do?</h1>
+                </nav>
+            </nav>
+            <nav class="row">
+                <nav class="col-md text-center">
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#createList">
+                        List
+                    </button>
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#createToDo">
+                        To do
+                    </button>
+                </nav>
+            </nav>
+
+        </nav>
+        <div class="modal" id="createList">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Create a List</h2>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md text-center">
+                                <input class="input-group-text" type="text" id="name" placeholder="Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="createList();"
+                            data-dismiss="modal">Create</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <div class="modal" id="createToDo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Create a To Do</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="description" placeholder="Description" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="dateCreated" placeholder="Date Created" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="deadlineDate" placeholder="Deadline Date" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="text" id="Completion"
+                                placeholder="To do Completed?" />
+                        </div>
+                        <div class="col-md text-center">
+                            <input class="input-group-text" type="number" id="ListID" placeholder="ListID" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="createToDo();"
+                        data-dismiss="modal">Create</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="space"></div>
+    <div class="alert" id="onsuccess"></div>
+
+    <!-- Scripts  -->
+    <!--  -->
+    <script src="./Index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
