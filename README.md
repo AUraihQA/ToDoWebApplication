@@ -1,7 +1,9 @@
 # ToDoWebApplication
 
 Coverage: 97.0%
+
 ![](Documentation - After/Coverage.png)
+
 Description: A web application that allows users to add different to do's/ tasks to a list.
 
 [Jira board](https://auraihqa.atlassian.net/jira/software/c/projects/TDWA/issues/)
