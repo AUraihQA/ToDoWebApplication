@@ -81,6 +81,7 @@ Step 1 - Go into the folder
 Step 2 - Navigate your way into the target folder
 Step 3 - Once in the folder Right click and open git bash
 Step 4 - type "java -jar ToDoWebApplication-0.0.1-SNAPSHOT.jar"
+Step 5 - once you've entered the input, you will be able to go to your browser and type "localhost:8080" and this will show the web application 
 ```
 
 ## Built With
